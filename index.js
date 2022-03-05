@@ -1,8 +1,10 @@
 function playSound(keyPressed) {
+  buttonAnimation(keyPressed);
   switch (keyPressed) {
     case "w":
       let sound1 = new Audio("sounds/crash.mp3");
       sound1.play();
+
       break;
     case "a":
       let sound2 = new Audio("sounds/kick-bass.mp3");
@@ -44,3 +46,11 @@ for (let i = 0; i < numberOfDrumsButtons; i++) {
 document.addEventListener("keydown", function (ev) {
   playSound(ev.key);
 });
+
+function buttonAnimation(currentKey) {
+  let activeKey = document.querySelector("." + currentKey);
+  activeKey.classList.add("pressed");
+  setTimeout(function () {
+    activeKey.classList.remove("pressed");
+  }, 100);
+}
